@@ -3,8 +3,10 @@
         <div class="absolute inset-x-0 top-0 h-2 bg-gradient-to-l from-pink-500 via-red-500 to-yellow-500"></div>
         <nav class="container p-5 mx-auto lg:flex lg:justify-between lg:items-center">
             <div class="flex items-center justify-between">
-                <a href="#" class="text-base-content font-bold text-xl">
-                    Blog Post Splade
+                <a href="#" class="text-base-content font-bold text-xl flex space-x-2">
+                    <img src="{{ asset('icon/logo_bpsdmp.png') }}" class="w-8 h-8" alt="logo_bpsdmp"> <span
+                        class="hover:underline">BPSDMP Kominfo
+                        Surabaya</span>
                 </a>
 
                 <!-- Mobile menu button -->
@@ -32,11 +34,7 @@
                     <a class="text-base-content transition-colors duration-300 transform lg:mx-6 hover:text-secondary-focus"
                         href="#">Home</a>
                     <a class="text-base-content transition-colors duration-300 transform lg:mx-6 hover:text-secondary-focus"
-                        href="#">Components</a>
-                    <a class="text-base-content transition-colors duration-300 transform lg:mx-6 hover:text-secondary-focus"
-                        href="#">Pricing</a>
-                    <a class="text-base-content transition-colors duration-300 transform lg:mx-6 hover:text-secondary-focus"
-                        href="#">Contact</a>
+                        href="#">About</a>
                 </div>
                 @if (Route::has('login'))
                 @auth
@@ -74,7 +72,7 @@
                 <Link
                     class="lg:flex block px-5 py-2 mt-4 text-sm text-center btn btn-outline  capitalize bg-base-100 rounded-lg lg:mt-0 lg:w-auto"
                     href="{{ url('login') }}">
-                Get Started
+                Login
                 </Link>
                 @endauth
                 @endif
