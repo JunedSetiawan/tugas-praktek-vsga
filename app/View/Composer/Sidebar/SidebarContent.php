@@ -28,12 +28,14 @@ class SidebarContent
                         'icon' => @svg('heroicon-o-home'),
                         'menus' => [],
                     ],
+                    [
+                        'title' => 'Kegiatan',
+                        'route' => 'activity.index',
+                        'icon' => @svg('heroicon-o-document-text'),
+                        'menus' => [],
+                    ],
                 ],
             ],
-            [
-                'title' => 'Documentation',
-                'menus' => [],
-            ]
         ];
     }
 }

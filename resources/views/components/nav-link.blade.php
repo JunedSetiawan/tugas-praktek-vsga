@@ -2,7 +2,7 @@
 
 @php
 $classes = ($active ?? false)
-? 'active'
+? 'active bg-base-300'
 : '';
 @endphp
 
