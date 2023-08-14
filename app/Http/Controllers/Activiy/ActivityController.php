@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use ProtoneMedia\Splade\Facades\Toast;
+use ProtoneMedia\Splade\FileUploads\ExistingFile;
 
 class ActivityController extends Controller
 {
@@ -46,11 +47,11 @@ class ActivityController extends Controller
         $post->user_id = Auth::user()->id;
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->image = $filename;
+        $post->image = $filename ?? '';
 
         $post->save();
 
-        Toast::title('Aktivitas berhasil ditambahkan')->autoDismiss(5);
+        Toast::message('Berhasil Menambahkan Data Aktivitas')->autoDismiss(5);
 
         return redirect()->route('activity.index');
     }
@@ -66,17 +67,41 @@ class ActivityController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::where('id', $id)->first();
+        $image = ExistingFile::fromDisk('public')->get("image/$post->image");
+
+        return view('pages.activity.edit', [
+            'post' => $post,
+            'image' => $image,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(StorePostRequest $request, $id)
     {
-        //
+        dd($request->all());
+        $post = Post::where('id', $id)->first();
+        // $post->user_id = Auth::user()->id;
+        // $post->title = $request->title;
+        // $post->body = $request->body;
+        // $post->image = $request->image;
+
+        // $post->save();
+
+        // // $post->update([
+        // //     'user_id' => Auth::user()->id,
+        // //     'title' => $request->title,
+        // //     'body' => $request->body,
+        // //     'image' => $request->image
+        // // ]);
+
+        // Toast::message('Berhasil Mengubah Data Aktivitas')->autoDismiss(5);
+
+        // return redirect()->route('activity.index');
     }
 
     /**

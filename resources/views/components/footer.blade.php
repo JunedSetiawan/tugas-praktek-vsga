@@ -3,8 +3,10 @@
 @else
 <footer class="bg-base-100">
     <div class="container flex flex-col items-center justify-between p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row">
-        <a href="#">
-            <img class="w-auto h-7" src="https://merakiui.com/images/full-logo.svg" alt="">
+        <a href="#" class="text-base-content font-bold text-xl flex space-x-2">
+            <img src="{{ asset('icon/logo_bpsdmp.png') }}" class="w-8 h-8" alt="logo_bpsdmp"> <span
+                class="hover:underline">BPSDMP Kominfo
+                Surabaya</span>
         </a>
 
         <p class="text-sm text-gray-600 dark:text-gray-300">© Copyright {{ \Carbon\Carbon::now()->format("Y") }}. by {{

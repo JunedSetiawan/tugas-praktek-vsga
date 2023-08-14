@@ -53,19 +53,18 @@ class Posts extends AbstractTable
             ->column('created_at', sortable: true)
             ->rowLink(fn (Post $post) => route('activity.edit', ['id' => $post->id]))
             ->bulkAction(
-                label: 'Delete projects',
+                label: 'Hapus Data Aktivitas',
                 each: fn (Post $post) => $post->delete(),
                 confirm: true,
-                before: fn () => info('Touching the selected projects'),
-                after: fn () => Toast::title('Aktivitas Berhasil Dihapus')->autoDismiss(5)
+                after: fn () => Toast::message('Data Aktivitas Berhasil Dihapus')->autoDismiss(5)
             )
             ->paginate(5);
 
-            // ->searchInput()
-            // ->selectFilter()
-            // ->withGlobalSearch()
+        // ->searchInput()
+        // ->selectFilter()
+        // ->withGlobalSearch()
 
-            // ->bulkAction()
-            // ->export()
+        // ->bulkAction()
+        // ->export()
     }
 }

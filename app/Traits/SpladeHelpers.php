@@ -40,23 +40,23 @@ trait SpladeHelpers
         SEO::metaByProperty($property, $attribute);
     }
 
-    public function spladeToast(array $arr)
-    {
-        $success = isset($arr['success']) ? $arr['success'] : throw new \InvalidArgumentException("Invalid property for splade toast. Expected [] with key success and message.");
-        $message = isset($arr['message']) ? $arr['message'] : throw new \InvalidArgumentException("Invalid property for splade toast. Expected [] with key message and message.");
+    // public function spladeToast(array $arr)
+    // {
+    //     $success = isset($arr['success']) ? $arr['success'] : throw new \InvalidArgumentException("Invalid property for splade toast. Expected [] with key success and message.");
+    //     $message = isset($arr['message']) ? $arr['message'] : throw new \InvalidArgumentException("Invalid property for splade toast. Expected [] with key message and message.");
 
-        if ($success) {
-            Toast::title('Yeay !!!')
-                ->success()
-                ->rightTop()
-                ->message($message)
-                ->autoDismiss(10);
-        }
+    //     if ($success) {
+    //         Toast::title('Yeay !!!')
+    //             ->success()
+    //             ->rightTop()
+    //             ->message($message)
+    //             ->autoDismiss(10);
+    //     }
 
-        Toast::title('Opps !!!')
-            ->danger()
-            ->rightTop()
-            ->message($message)
-            ->autoDismiss(10);
-    }
+    //     Toast::title('Opps !!!')
+    //         ->danger()
+    //         ->rightTop()
+    //         ->message($message)
+    //         ->autoDismiss(10);
+    // }
 }

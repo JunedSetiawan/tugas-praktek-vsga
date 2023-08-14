@@ -31,10 +31,11 @@
             <div :class="isOpen ? 'translate-x-0 opacity-100' : 'opacity-0 -translate-x-full'"
                 class="font-semibold absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-base-100 shadow-md lg:bg-transparent lgent lg:shadow-none lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
                 <div class="flex flex-col space-y-4 lg:mt-0 lg:flex-row lg:-px-8 lg:space-y-0">
+                    <Link
+                        class="text-base-content transition-colors duration-300 transform lg:mx-6 hover:text-secondary-focus"
+                        href="/">Home</Link>
                     <a class="text-base-content transition-colors duration-300 transform lg:mx-6 hover:text-secondary-focus"
-                        href="#">Home</a>
-                    <a class="text-base-content transition-colors duration-300 transform lg:mx-6 hover:text-secondary-focus"
-                        href="#">About</a>
+                        href="#about">About</a>
                 </div>
                 @if (Route::has('login'))
                 @auth
