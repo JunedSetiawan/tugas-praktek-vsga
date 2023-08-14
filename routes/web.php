@@ -39,6 +39,7 @@ Route::middleware('splade')->group(function () {
         Route::get('/activity', [ActivityController::class, 'index'])->name('activity.index');
         Route::get('/activity/add', [ActivityController::class, 'create'])->name('activty.add');
         Route::post('/activity/store', [ActivityController::class, 'store'])->name('activity.store');
+        Route::get('/activity/edit/{id}', [ActivityController::class, 'edit'])->name('activity.edit');
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

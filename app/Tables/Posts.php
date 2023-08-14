@@ -5,6 +5,7 @@ namespace App\Tables;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use ProtoneMedia\Splade\AbstractTable;
+use ProtoneMedia\Splade\Facades\Toast;
 use ProtoneMedia\Splade\SpladeTable;
 
 class Posts extends AbstractTable
@@ -50,6 +51,14 @@ class Posts extends AbstractTable
         $table
             ->column('title', sortable: true, searchable: true)
             ->column('created_at', sortable: true)
+            ->rowLink(fn (Post $post) => route('activity.edit', ['id' => $post->id]))
+            ->bulkAction(
+                label: 'Delete projects',
+                each: fn (Post $post) => $post->delete(),
+                confirm: true,
+                before: fn () => info('Touching the selected projects'),
+                after: fn () => Toast::title('Aktivitas Berhasil Dihapus')->autoDismiss(5)
+            )
             ->paginate(5);
 
             // ->searchInput()
