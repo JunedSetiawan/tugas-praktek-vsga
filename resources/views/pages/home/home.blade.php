@@ -23,132 +23,25 @@
         <h1 class="mb-5 font-semibold text-2xl text-base-content">All blog posts</h1>
         <div class="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl py-4">
             <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 sm:mx-auto lg:max-w-full">
+                @foreach ($posts as $post)
                 <div class="overflow-hidden transition-shadow duration-300 rounded shadow-sm">
-                    <img src="{{ asset('default.jpg') }}" class="object-cover w-full h-48 sm:h-56" alt="" />
+                    <img src="{{ asset("storage/image/$post->image") }}" class="object-cover w-full h-48 sm:h-56"/>
                     <div class="pt-5">
                         <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
-                            <span class="text-base-content">User — 28 Dec 2020</span>
+                            <span class="text-base-content">Admin — {{ $post->created_at->diffForHumans() }}</span>
                         </p>
                         <a href="/"
-                            class="text-base-content inline-block mb-3 text-xl font-semibold transition-colors duration-200">Lorem
-                            ipsum dolor sit amet consectetur adipisicing elit. Quia animi corporis dicta aspernatur.</a>
+                            class="text-base-content inline-block mb-3 text-lg font-semibold transition-colors duration-200">{{ $post->title }}</a>
                         <p class="mb-2 text-base-content">
-                            Sed ut perspiciatis unde omnis iste natus error sit sed quia consequuntur magni voluptatem
-                            doloremque.
+                          {!! Str::limit($post->body, 120) !!}
                         </p>
-                        <div class="mt-4 space-x-2">
-                            <div class="badge badge-outline border-2 border-secondary-focus  text-base-content">
-                                Technology
-                            </div>
-                            <div class="badge badge-outline border-2 text-base-content">#tutorial</div>
+                        <div class="mt-4 space-x-2 font-semibold underline">
+                            Baca Selengkapnya...
                         </div>
                     </div>
                 </div>
-                <div class="overflow-hidden transition-shadow duration-300 rounded shadow-sm">
-                    <img src="{{ asset('default.jpg') }}" class="object-cover w-full h-48 sm:h-56" alt="" />
-                    <div class="pt-5">
-                        <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
-                            <span class="text-base-content">User — 28 Dec 2020</span>
-                        </p>
-                        <a href="/"
-                            class="text-base-content inline-block mb-3 text-xl font-semibold transition-colors duration-200">Lorem
-                            ipsum dolor sit amet consectetur adipisicing elit. Quia animi corporis dicta aspernatur.</a>
-                        <p class="mb-2 text-base-content">
-                            Sed ut perspiciatis unde omnis iste natus error sit sed quia consequuntur magni voluptatem
-                            doloremque.
-                        </p>
-                        <div class="mt-4 space-x-2">
-                            <div class="badge badge-outline border-2 border-secondary-focus  text-base-content">
-                                Technology
-                            </div>
-                            <div class="badge badge-outline border-2 text-base-content">#tutorial</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="overflow-hidden transition-shadow duration-300 rounded shadow-sm">
-                    <img src="{{ asset('default.jpg') }}" class="object-cover w-full h-48 sm:h-56" alt="" />
-                    <div class="pt-5">
-                        <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
-                            <span class="text-base-content">User — 28 Dec 2020</span>
-                        </p>
-                        <a href="/"
-                            class="text-base-content inline-block mb-3 text-xl font-semibold transition-colors duration-200">Lorem
-                            ipsum dolor sit amet consectetur adipisicing elit. Quia animi corporis dicta aspernatur.</a>
-                        <p class="mb-2 text-base-content">
-                            Sed ut perspiciatis unde omnis iste natus error sit sed quia consequuntur magni voluptatem
-                            doloremque.
-                        </p>
-                        <div class="mt-4 space-x-2">
-                            <div class="badge badge-outline border-2 border-secondary-focus  text-base-content">
-                                Technology
-                            </div>
-                            <div class="badge badge-outline border-2 text-base-content">#tutorial</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="overflow-hidden transition-shadow duration-300 rounded shadow-sm">
-                    <img src="{{ asset('default.jpg') }}" class="object-cover w-full h-48 sm:h-56" alt="" />
-                    <div class="pt-5">
-                        <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
-                            <span class="text-base-content">User — 28 Dec 2020</span>
-                        </p>
-                        <a href="/"
-                            class="text-base-content inline-block mb-3 text-xl font-semibold transition-colors duration-200">Lorem
-                            ipsum dolor sit amet consectetur adipisicing elit. Quia animi corporis dicta aspernatur.</a>
-                        <p class="mb-2 text-base-content">
-                            Sed ut perspiciatis unde omnis iste natus error sit sed quia consequuntur magni voluptatem
-                            doloremque.
-                        </p>
-                        <div class="mt-4 space-x-2">
-                            <div class="badge badge-outline border-2 border-secondary-focus  text-base-content">
-                                Technology
-                            </div>
-                            <div class="badge badge-outline border-2 text-base-content">#tutorial</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="overflow-hidden transition-shadow duration-300 rounded shadow-sm">
-                    <img src="{{ asset('default.jpg') }}" class="object-cover w-full h-48 sm:h-56" alt="" />
-                    <div class="pt-5">
-                        <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
-                            <span class="text-base-content">User — 28 Dec 2020</span>
-                        </p>
-                        <a href="/"
-                            class="text-base-content inline-block mb-3 text-xl font-semibold transition-colors duration-200">Lorem
-                            ipsum dolor sit amet consectetur adipisicing elit. Quia animi corporis dicta aspernatur.</a>
-                        <p class="mb-2 text-base-content">
-                            Sed ut perspiciatis unde omnis iste natus error sit sed quia consequuntur magni voluptatem
-                            doloremque.
-                        </p>
-                        <div class="mt-4 space-x-2">
-                            <div class="badge badge-outline border-2 border-secondary-focus  text-base-content">
-                                Technology
-                            </div>
-                            <div class="badge badge-outline border-2 text-base-content">#tutorial</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="overflow-hidden transition-shadow duration-300 rounded shadow-sm">
-                    <img src="{{ asset('default.jpg') }}" class="object-cover w-full h-48 sm:h-56" alt="" />
-                    <div class="pt-5">
-                        <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
-                            <span class="text-base-content">User — 28 Dec 2020</span>
-                        </p>
-                        <a href="/"
-                            class="text-base-content inline-block mb-3 text-xl font-semibold transition-colors duration-200">Lorem
-                            ipsum dolor sit amet consectetur adipisicing elit. Quia animi corporis dicta aspernatur.</a>
-                        <p class="mb-2 text-base-content">
-                            Sed ut perspiciatis unde omnis iste natus error sit sed quia consequuntur magni voluptatem
-                            doloremque.
-                        </p>
-                        <div class="mt-4 space-x-2">
-                            <div class="badge badge-outline border-2 border-secondary-focus  text-base-content">
-                                Technology
-                            </div>
-                            <div class="badge badge-outline border-2 text-base-content">#tutorial</div>
-                        </div>
-                    </div>
-                </div>
+                    
+                @endforeach
 
             </div>
         </div>

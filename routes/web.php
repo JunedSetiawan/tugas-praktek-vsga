@@ -33,11 +33,12 @@ Route::middleware('splade')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('main');
 
     Route::middleware('auth')->group(function () {
-        Route::get('testing-table', [UserController::class, 'index'])->name('test.table');
         Route::get('/dashboard', function () {
             return view('pages.dashboard.dashboard');
         })->middleware(['verified'])->name('dashboard');
         Route::get('/activity', [ActivityController::class, 'index'])->name('activity.index');
+        Route::get('/activity/add', [ActivityController::class, 'create'])->name('activty.add');
+        Route::post('/activity/store', [ActivityController::class, 'store'])->name('activity.store');
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
