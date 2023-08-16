@@ -38,9 +38,11 @@ class ActivityController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        $ext = $request->file('image')->getClientOriginalExtension();
-        $data = $request->file('image')->store('public/image');
-        $filename = pathinfo($data, PATHINFO_FILENAME) . '.' . $ext;
+        if ($request->hasFile('image')) {
+            $ext = $request->file('image')->getClientOriginalExtension();
+            $data = $request->file('image')->store('public/image');
+            $filename = pathinfo($data, PATHINFO_FILENAME) . '.' . $ext;
+        }
 
         $post = new Post();
 
@@ -59,9 +61,15 @@ class ActivityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+        $data = Post::with('user')->findOrFail($id);
+        return view(
+            'pages.activity.show',
+            [
+                'data' => $data
+            ]
+        );
     }
 
     /**
@@ -70,38 +78,50 @@ class ActivityController extends Controller
     public function edit($id)
     {
         $post = Post::where('id', $id)->first();
-        $image = ExistingFile::fromDisk('public')->get("image/$post->image");
+        // $image = ExistingFile::fromDisk('public')->get("$post->image");
 
         return view('pages.activity.edit', [
             'post' => $post,
-            'image' => $image,
+            // 'image' => $image,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(StorePostRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        dd($request->all());
-        $post = Post::where('id', $id)->first();
-        // $post->user_id = Auth::user()->id;
-        // $post->title = $request->title;
-        // $post->body = $request->body;
-        // $post->image = $request->image;
+        $activity = Post::findOrFail($id);
 
-        // $post->save();
+        // Update judul dan konten aktivitas
+        $activity->title = $request->input('title');
+        $activity->body = $request->input('body');
 
-        // // $post->update([
-        // //     'user_id' => Auth::user()->id,
-        // //     'title' => $request->title,
-        // //     'body' => $request->body,
-        // //     'image' => $request->image
-        // // ]);
+        // Jika ada file gambar baru yang diunggah
+        if ($request->hasFile('image')) {
+            // Menghapus gambar lama (jika ada)
+            if ($activity->image) {
+                File::delete(public_path('storage/image/' . $activity->image));
+            }
 
-        // Toast::message('Berhasil Mengubah Data Aktivitas')->autoDismiss(5);
+            // Upload dan menyimpan gambar baru
+            $ext = $request->file('image')->getClientOriginalExtension();
+            $data = $request->file('image')->store('public/image');
+            $filename = pathinfo($data, PATHINFO_FILENAME) . '.' . $ext;
 
-        // return redirect()->route('activity.index');
+            $activity->image = $filename;
+        } else {
+            // Jika tidak ada file gambar baru, tetapi ada gambar lama yang dipilih
+            if ($request->image_existing) {
+                $activity->image = $request->image_existing;
+            }
+        }
+
+        $activity->save();
+
+        Toast::message('Berhasil Mengubah Data Aktivitas')->autoDismiss(5);
+
+        return redirect()->route('activity.index');
     }
 
     /**

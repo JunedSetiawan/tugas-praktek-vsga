@@ -24,6 +24,8 @@
             <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 sm:mx-auto lg:max-w-full">
                 @foreach ($posts as $post)
                 <div class="overflow-hidden transition-shadow duration-300 rounded shadow-sm">
+                    {{-- <img src="{{ route('get.image',['folder' => 'image', 'image' => $post->image]) }}" class="object-cover
+                    w-full h-48 sm:h-56" /> --}}
                     <img src="{{ asset($post->image ? 'storage/image/' . $post->image : 'storage/image/default.jpg') }}"
                         class="object-cover
                     w-full h-48 sm:h-56" />
@@ -31,9 +33,9 @@
                         <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
                             <span class="text-base-content">Admin — {{ $post->created_at->diffForHumans() }}</span>
                         </p>
-                        <a href="/"
-                            class="text-base-content inline-block mb-3 text-lg font-semibold transition-colors duration-200">{{
-                            $post->title }}</a>
+                        <Link href="{{ route('activity.show',$post->id) }}"
+                            class="text-base-content inline-block mb-3 text-lg font-semibold transition-colors duration-200">
+                        {{ $post->title }}</Link>
                         <p class="mb-2 text-base-content">
                             {!! Str::limit($post->body, 120) !!}
                         </p>

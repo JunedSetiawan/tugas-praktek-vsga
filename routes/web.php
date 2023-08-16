@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Activiy\ActivityController;
+use App\Http\Controllers\GetImageFileController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -32,15 +33,26 @@ Route::middleware('splade')->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('main');
 
+    Route::get('activity/{id}', [ActivityController::class, 'show'])->name('activity.show');
+    Route::get('{folder?}/{image}', [GetImageFileController::class, 'index'])->name('get.image');
+
+
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', function () {
             return view('pages.dashboard.dashboard');
         })->middleware(['verified'])->name('dashboard');
+        Route::get('/test', function () {
+            return view('pages.activity.add');
+        })->middleware(['verified'])->name('test');
+
         Route::get('/activity', [ActivityController::class, 'index'])->name('activity.index');
-        Route::get('/activity/add', [ActivityController::class, 'create'])->name('activty.add');
-        Route::post('/activity/store', [ActivityController::class, 'store'])->name('activity.store');
-        Route::get('/activity/edit/{id}', [ActivityController::class, 'edit'])->name('activity.edit');
-        Route::post('/activity/update/{id}', [ActivityController::class, 'edit'])->name('activity.update');
+        Route::get('create', [ActivityController::class, 'create'])->name('create');
+        Route::group(['prefix' => 'activity', 'as' => 'activity.'], function () {
+
+            Route::post('store', [ActivityController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [ActivityController::class, 'edit'])->name('edit');
+            Route::post('update/{id}', [ActivityController::class, 'update'])->name('update');
+        });
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
