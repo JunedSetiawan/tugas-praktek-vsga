@@ -33,15 +33,18 @@
                         <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
                             <span class="text-base-content">Admin — {{ $post->created_at->diffForHumans() }}</span>
                         </p>
-                        <Link href="{{ route('activity.show',$post->id) }}"
-                            class="text-base-content inline-block mb-3 text-lg font-semibold transition-colors duration-200">
-                        {{ $post->title }}</Link>
+                        <Link href="{{ route('activity.show',$post->id) }}">
+                        <h3 class="text-base-content inline-block mb-3 text-lg font-semibold transition-colors
+                        duration-200">
+                            {{ $post->title }}
+                        </h3>
                         <p class="mb-2 text-base-content">
                             {!! Str::limit($post->body, 120) !!}
                         </p>
                         <div class="mt-4 space-x-2 font-semibold underline">
                             Baca Selengkapnya...
                         </div>
+                        </Link>
                     </div>
                 </div>
 
@@ -49,6 +52,7 @@
 
             </div>
         </div>
+        {{ $posts->links() }}
     </div>
     <div class="mt-14 inset-x-0 top-0 h-2 bg-gradient-to-l from-pink-500 via-red-500 to-yellow-500"></div>
     <div class="container px-6 pt-4 pb-4 mx-auto text-center" id="about">

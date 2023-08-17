@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $this->spladeTitle('Blog Splade');
 
-        return view('pages.home.home',[
+        return view('pages.home.home', [
             'posts' => Post::query()->latest()->paginate(6),
         ]);
     }

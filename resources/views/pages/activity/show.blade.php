@@ -7,9 +7,13 @@
                     <h5>{{ $data->created_at->diffForHumans() }} by</h5>
                     <p class="mt-1 ml-2 uppercase">{{ $data->user->name }}</p>
                 </div>
+                <h1>{{ $data->title }}</h1>
+                <img src="{{ asset($data->image ? 'storage/image/' . $data->image : 'storage/image/default.jpg') }}"
+                    class="object-cover
+            w-full h-48 sm:h-56" />
             </div>
-            <h1>{{ $data->title }}</h1>
             {!! $data->body !!}
         </div>
     </div>
+    <x-footer />
 </x-guest-layout>

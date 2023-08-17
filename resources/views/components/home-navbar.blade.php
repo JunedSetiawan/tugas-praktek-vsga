@@ -3,7 +3,7 @@
         <div class="absolute inset-x-0 top-0 h-2 bg-gradient-to-l from-pink-500 via-red-500 to-yellow-500"></div>
         <nav class="container p-5 mx-auto lg:flex lg:justify-between lg:items-center">
             <div class="flex items-center justify-between">
-                <a href="#" class="text-base-content font-bold text-xl flex space-x-2">
+                <a href="/" class="text-base-content font-bold text-xl flex space-x-2">
                     <img src="{{ asset('icon/logo_bpsdmp.png') }}" class="w-8 h-8" alt="logo_bpsdmp"> <span
                         class="hover:underline">BPSDMP Kominfo
                         Surabaya</span>
