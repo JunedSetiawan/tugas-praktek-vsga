@@ -1,4 +1,4 @@
-## Cara Setup
+## Setup project
 https://www.showwcase.com/show/17753/how-to-setup-laravel-project-cloned-from-github
 
 Using
